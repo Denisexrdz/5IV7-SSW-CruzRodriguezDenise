@@ -1,0 +1,10 @@
+la palabra q queremos cifrar tiene q ser mayor a la clave
+
+abcd
+bcde
+cdef
+defg
+
+busqueda de coordenadas 
+pasar a caracter el texto como la clave
+cotegar texto y caracter 

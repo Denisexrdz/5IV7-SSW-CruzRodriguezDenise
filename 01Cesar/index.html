@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cesar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <hr>
+        <div class="row">
+           <div class="co1-md-12">
+            <div class="form-group">
+                <label for="texto">Texto que desea cifrar </label>
+                <textarea for="text" name="texto" id="texto" class="form-control" ></textarea>
+            </div>
+           </div>
+        <hr> 
+           <div class="co1-md-12">
+            <div class="form-group">
+                <label for="desplazamiento">Desplazamiento </label>
+                <input type="range" min="1" max="25" step="1" id="desplazamiento"> </input>
+            </div>
+        <hr>
+           </div> 
+           <div class="co1-md-12">
+            <div class="form-group">
+                <label for="cifrado">Cifrado</label>
+                <input type="text" id="cifrado" name="cifrado" class="form-control" disabled="disabled"> </input>
+            </div>
+           </div> 
+
+    </div>
+    <script src="./jsCesar/cesar.js"></script>
+</body>
+</html>
