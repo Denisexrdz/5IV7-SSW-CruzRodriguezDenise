@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cifrado y Descifrado</title>
+    <link rel="stylesheet"  href="css/style.css">
+</head>
+<body>
+    <div id="content">
+    <h1>Cifrado y Descifrado</h1>
+    <h2>Cruz Rodriguez Denise 5IV7</h2>
+    <div>
+        <label for="text">Texto:</label>
+        <input type="text" id="text" required>
+    </div>
+    <div>
+        <label for="method">Método:</label>
+        <select id="method" required>
+            <option value="cesar">César</option>
+            <option value="vigenere">Vigenère</option>
+        </select>
+    </div>
+    <div id="shift-div">
+        <label for="shift">Desplazamiento (César):</label>
+        <input type="text" id="shift">
+    </div>
+    <div id="key-div">
+        <label for="key">Clave (Vigenere):</label>
+        <input type="text" id="key">
+    </div>
+    <br>
+    <button id="encrypt">Cifrar</button>
+    <button id="decrypt">Descifrar</button>
+    <button id="copy">Copiar Cifrado</button>
+    <button id="decrypt-text">Descifrar Texto Cifrado</button>
+    <hr>
+    <div>
+        <label for="result">Resultado:</label>
+        <textarea id="result" rows="4" cols="50" readonly></textarea>
+    </div>
+
+    <script src="js/script.js"></script>
+</div>
+</body>
+</html>
+
