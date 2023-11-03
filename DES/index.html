@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cifrado y Descifrado</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Cifrado y Descifrado de Archivos</h1>
+
+    <form id="cifradoForm">
+        <h2>Cifrado</h2>
+        
+        <label for="claveCifrado">Clave de Cifrado:</label>
+        <input type="text" id="claveCifrado" required placeholder="***">
+        <input type="file" id="archivoCifrado" required>
+        <button type="submit">Cifrar Archivo</button>
+        <a id="descargarArchivoCifrado" style="display: none">Descargar Archivo Cifrado</a>
+    </form>
+
+    <form id="descifradoForm">
+        <h2>Descifrado</h2>
+        <label for="claveDescifrado">Clave de Descifrado:</label>
+        <input type="text" id="claveDescifrado" required placeholder="***">
+        <input type="file" id="archivoDescifrado" required>
+        <button type="submit">Descifrar Archivo</button>
+        <a id="descargarArchivoDescifrado" style="display: none">Descargar Archivo Descifrado</a>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script>
+        document.getElementById('cifradoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const clave = document.getElementById('claveCifrado').value;
+            const archivoInput = document.getElementById('archivoCifrado');
+            const file = archivoInput.files[0];
+            
+            const reader = new FileReader();
+            reader.onload = function() {
+                const contenidoArchivo = reader.result;
+                const mensajeCifrado = CryptoJS.DES.encrypt(contenidoArchivo, clave).toString();
+                const blob = new Blob([mensajeCifrado], { type: 'text/plain' });
+                
+                const enlaceDescarga = document.getElementById('descargarArchivoCifrado');
+                enlaceDescarga.href = window.URL.createObjectURL(blob);
+                enlaceDescarga.download = 'archivo_cifrado.txt';
+                enlaceDescarga.style.display = 'block';
+            }
+            
+            reader.readAsBinaryString(file);
+        });
+
+        document.getElementById('descifradoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const clave = document.getElementById('claveDescifrado').value;
+            const archivoInput = document.getElementById('archivoDescifrado');
+            const file = archivoInput.files[0];
+
+            const reader = new FileReader();
+            reader.onload = function() {
+                const contenidoArchivoCifrado = reader.result;
+                const mensajeDescifrado = CryptoJS.DES.decrypt(contenidoArchivoCifrado, clave).toString(CryptoJS.enc.Utf8);
+                const blob = new Blob([mensajeDescifrado], { type: 'text/plain' });
+
+                const enlaceDescarga = document.getElementById('descargarArchivoDescifrado');
+                enlaceDescarga.href = window.URL.createObjectURL(blob);
+                enlaceDescarga.download = 'archivo_descifrado.txt';
+                enlaceDescarga.textContent = 'Descargar Archivo Descifrado';
+                enlaceDescarga.style.display = 'block';
+            }
+
+            reader.readAsBinaryString(file);
+        });
+    </script>
+</body>
+</html>
